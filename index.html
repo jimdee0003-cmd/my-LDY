@@ -4,20 +4,42 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>我的交友展示頁</title>
-  <!-- TikTok Pixel Code Start -->
-<script>
-!function (w, d, t) {
-  w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(
-var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script")
-;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
-
-
-  ttq.load('D9D1G5BC77UD5IE51KH0');
-  ttq.page();
-}(window, document, 'ttq');
-</script>
-<!-- TikTok Pixel Code End -->
   <link rel="stylesheet" href="style.css">
+
+  <!-- TikTok Pixel Code Start -->
+  <script>
+  !function (w, d, t) {
+    w.TiktokAnalyticsObject=t;
+    var ttq=w[t]=w[t]||[];
+    ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"];
+    ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};
+    for(var i=0;i<ttq.methods.length;i++) ttq.setAndDefer(ttq,ttq.methods[i]);
+    ttq.instance=function(t){
+      var e=ttq._i[t]||[];
+      for(var n=0;n<ttq.methods.length;n++) ttq.setAndDefer(e,ttq.methods[n]);
+      return e
+    };
+    ttq.load=function(e,n){
+      var r="https://analytics.tiktok.com/i18n/pixel/events.js";
+      ttq._i=ttq._i||{};
+      ttq._i[e]=[];
+      ttq._i[e]._u=r;
+      ttq._t=ttq._t||{};
+      ttq._t[e]=+new Date;
+      ttq._o=ttq._o||{};
+      ttq._o[e]=n||{};
+      n=document.createElement("script");
+      n.type="text/javascript";
+      n.async=!0;
+      n.src=r+"?sdkid="+e+"&lib="+t;
+      e=document.getElementsByTagName("script")[0];
+      e.parentNode.insertBefore(n,e)
+    };
+    ttq.load('D9D1G5BC77UD5IE51KH0');
+    ttq.page();
+  }(window, document, 'ttq');
+  </script>
+  <!-- TikTok Pixel Code End -->
 </head>
 <body>
   <main class="page">
@@ -30,9 +52,15 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
         </p>
 
         <div class="btn-wrap">
-        <a class="btn btn-line" href="https://line.me/ti/p/~16666986" target="_blank" rel="noopener noreferrer">
-    加 LINE 聊一聊
-        </a>
+          <a
+            class="btn btn-line"
+            href="https://line.me/ti/p/~16666986"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-btn="top_line_button"
+          >
+            加 LINE 聊一聊
+          </a>
         </div>
       </div>
 
@@ -66,7 +94,13 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
     <section class="section cta">
       <h2>如果妳也期待一段認真的關係</h2>
       <p>歡迎透過 LINE 聯繫我，讓我們先從一句「你好」開始。</p>
-      <a class="btn btn-line" href="https://line.me/ti/p/~16666986" target="_blank" rel="noopener noreferrer">
+      <a
+        class="btn btn-line"
+        href="https://line.me/ti/p/~16666986"
+        target="_blank"
+        rel="noopener noreferrer"
+        data-btn="bottom_line_button"
+      >
         直接加 LINE
       </a>
     </section>
@@ -75,5 +109,27 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
       © 2026
     </footer>
   </main>
+
+  <script>
+    function sendClickEvent(buttonName, url) {
+      if (typeof ttq !== 'undefined') {
+        ttq.track('ClickButton', {
+          button_name: buttonName,
+          destination: 'LINE'
+        });
+      }
+
+      setTimeout(function () {
+        window.open(url, '_blank');
+      }, 200);
+    }
+
+    document.querySelectorAll('a[data-btn]').forEach(function (btn) {
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        sendClickEvent(btn.getAttribute('data-btn'), btn.href);
+      });
+    });
+  </script>
 </body>
 </html>
