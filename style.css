@@ -157,3 +157,30 @@ footer {
     grid-template-columns: 1fr;
   }
 }
+
+.btn-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 20px 0;
+}
+
+.btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .btn-wrap {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .btn {
+    width: fit-content;
+    max-width: 90%;
+  }
+}
